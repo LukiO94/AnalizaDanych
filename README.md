@@ -1,3 +1,5 @@
 # AnalizaDanych
 
-Nauka programowania w R
+Nauka programowania w R.
+
+WebScraper + ...
