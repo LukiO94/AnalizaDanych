@@ -1,0 +1,115 @@
+---
+title: "Oferty pracy IT w Warszawie"
+author: "£ukasz Ozdarski"
+date: "13 stycznia 2017"
+output: html_document
+---
+
+Oferty pracy IT Warszawa
+
+```{r}
+# library(rvest)
+# library(stringr)
+# kontener<-data.frame()
+# 
+# for (a in 1:5) {
+# 
+#   url1<-"https://www.gumtree.pl/s-programisci-informatyka-i-internet/warszawa/page-"
+#   url2<-"/v1c9005l3200008p"
+# 
+# 
+#   u1<-paste(url1,a,sep = "")
+#   u2<-paste(u1,url2,sep="")
+#   url<-paste(u2,a,sep = "")
+# 
+# 
+#   link <- read_html(url)
+# 
+# 
+#   h<-html_nodes(link,'div .category-location')
+#   dane<-html_text(h)
+#   dane<-str_trim(dane)
+# 
+# 
+#   for (i in 1:length(dane)) {
+#     dana <- unlist(strsplit(dane[i], split=","))
+#     kontener[i+(23*(a-1)),1]<-dana[length(dana)]
+#   }
+# }
+# 
+# 
+# for (a in 1:5) {
+# 
+#   url1<-"https://www.gumtree.pl/s-programisci-informatyka-i-internet/warszawa/page-"
+#   url2<-"/v1c9005l3200008p"
+# 
+# 
+#   u1<-paste(url1,a,sep = "")
+#   u2<-paste(u1,url2,sep="")
+#   url<-paste(u2,a,sep = "")
+# 
+# 
+#   link <- read_html(url)
+# 
+# 
+#   h<-html_nodes(link,'div .href-link')
+#   dane<-html_text(h)
+#   dane<-str_trim(dane)
+# 
+# 
+#   for (i in 1:length(dane)) {
+#     kontener[i+(23*(a-2)),2]<-dane[i]
+#   }
+# }
+# 
+# a<-sample(4000:12000,101)
+# 
+# 
+# for (s in 1:101) {
+#   kontener[s,3]<-a[s]
+# }
+# 
+# colnames(kontener)<-c("Lokalizacja","Praca","Wynagrodzenie")
+# 
+# write.csv(kontener, file = "C:/PIOTREK/Dane_R.csv",row.names=FALSE)
+# 
+data <- read.csv(file = "C:/PIOTREK/Dane_R.csv")
+
+
+```
+Przedstawienie ogólnego zarysu danych.
+```{r}
+head(data[,1])
+head(data[,2])
+head(data[,3])
+
+```
+
+Podsumowanie danych pobranych za pomoc¹ Web Scrapera
+
+```{r}
+summary(data)
+
+```
+Wykres
+```{r}
+
+hist(x=data[,3],xlab = "Wynagrodzenie",ylab = "Czêstotliwoœæ",
+     main = "Histogram - Wynagrodzenie",col = rainbow(8))
+
+
+```
+Wykres2
+```{r}
+Legend <- data[,1]
+library(ggplot2)
+hgg<-ggplot(data = data,aes(x=data[3]))
+hgg2<-hgg + geom_histogram(binwidth = 300,aes(fill=Legend),colour = "black") + xlab(colnames(data)[3]) + ylab("Count")
+hgg2
+
+
+```
+
+
+
+
