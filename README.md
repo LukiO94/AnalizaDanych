@@ -2,4 +2,4 @@
 
 Nauka programowania w R.
 
-WebScraper + MarkDown + ...
+WebScraper + MarkDown + Shiny
